@@ -18,9 +18,11 @@ async function interval() {
 		const status = `${ ip }`
 		await tweet(status).catch(err => { console.error(err) })
 	}
+	await exec(`touch ${ prevIPfile }`)
 	// await tweet("てすと").catch(err => { console.error(err) })
 }
 
+interval()
 setInterval(() => {
 	interval()
 }, 120000)
