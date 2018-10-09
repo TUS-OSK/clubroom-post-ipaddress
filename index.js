@@ -16,7 +16,7 @@ async function interval() {
 		await exec(`echo '${ ip }' >> ${ prevIPfile }`)
 
 		const status = `${ ip }`
-		await tweet(status)
+		await tweet(status).catch(err => { console.error(err) })
 	}
 	// await tweet("てすと").catch(err => { console.error(err) })
 }
