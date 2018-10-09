@@ -10,7 +10,7 @@ const prevIPfile = "./prev-ip.txt"
 async function interval() {
 	const previp = (await exec(`cat prev-ip.txt | tail -n +2`)).stdout.trim()
 	// console.log((await exec(`ifconfig`)).stdout)
-	const ip = (await exec(`ifconfig | grep -o 'inet \\d\\+\\.\\d\\+\\.\\d\\+\\.\\d\\+' | sed "s/inet //"`)).stdout.trim()
+	const ip = (await exec(`ifconfig | grep -o 'inet [0-9]\\+\\.[0-9]\\+\\.[0-9]\\+\\.[0-9]\\+' | sed "s/inet //"`)).stdout.trim()
 	if(previp !== ip) {
 		await exec(`echo '${ date() }' > ${ prevIPfile }`)
 		await exec(`echo '${ ip }' >> ${ prevIPfile }`)
