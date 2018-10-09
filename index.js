@@ -21,7 +21,9 @@ async function interval() {
 	// await tweet("てすと").catch(err => { console.error(err) })
 }
 
-interval()
+setInterval(() => {
+	interval()
+}, 120000)
 
 function tweet(status) {
 	return new Promise((resolve, reject) => {
